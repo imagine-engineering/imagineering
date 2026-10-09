@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -17,12 +16,13 @@ export const metadata: Metadata = {
     url: 'https://imagine.engineering',
     siteName: 'imagineering',
     type: 'website',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'imagineering — Copper for Rust; Groovy JVM tools in development' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'imagineering | Copper and Groovy development tools',
     description: 'Rust development in Copper. Groovy JVM tools are in development. More language products are planned.',
-    images: ['/opengraph-image'],
+    images: ['/opengraph-image.png'],
   },
   icons: {
     icon: [
@@ -44,7 +44,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-sans antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
