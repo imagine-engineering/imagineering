@@ -33,14 +33,14 @@ export default function LandingPage() {
           <LargeTestimonial />
         </AnimatedSection>
         <AnimatedSection
-          id="pricing-section"
+          id="products-section"
           className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16"
           delay={0.2}
         >
           <PricingSection />
         </AnimatedSection>
         <AnimatedSection
-          id="testimonials-section"
+          id="workflows-section"
           className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16"
           delay={0.2}
         >

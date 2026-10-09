@@ -24,7 +24,7 @@ const AiCodeReviews: React.FC = () => {
         } as React.CSSProperties
       }
       role="img"
-      aria-label="AI Code Reviews interface showing code suggestions with apply buttons"
+      aria-label="Static illustration of a proposed code change"
     >
       {/* Background Message Box (Blurred) */}
       <div
@@ -64,33 +64,10 @@ const AiCodeReviews: React.FC = () => {
               margin: 0,
             }}
           >
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>switch (type) {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> case 'success':</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> return {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {"          border: theme === 'dark' ? 'border-[rgba(34,197,94,0.4)]' : 'border-green-200',"}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> icon: (</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'            <svg className={\'baseIconClasses\'} fill="none" viewBox="0 0 14 14">'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> &lt;path</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                d="M3.85156 7.875L6.47656 10.5L10.8516 3.5"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                stroke="var(--ai-primary-color)"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                strokeLinecap="round"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                strokeLinejoin="round"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>{'                strokeWidth="1.5"'}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> /&gt;</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> &lt;/svg&gt;</p>
-          </div>
+            {["fn parse_count(input: &str) -> Result<usize, String> {", "    let trimmed = input.trim();", "    if trimmed.is_empty() {", "        return Err(\"missing count\".into());", "    }", "    let count = trimmed", "        .parse::<usize>()", "        .map_err(|error| error.to_string())?;", "    Ok(count)", "}", "", "fn main() {", "    println!(\"{:?}\", parse_count(\"42\"));", "}"].map((line, index) => (
+              <p key={index} style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>{line || "\u00a0"}</p>
+            ))}
+</div>
         </div>
       </div>
 
@@ -158,32 +135,11 @@ const AiCodeReviews: React.FC = () => {
               margin: 0,
             }}
           >
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>switch (type) {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> case 'success':</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> return {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {"          border: theme === 'dark' ? 'border-[rgba(34,197,94,0.4)]' : 'border-green-200',"}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> icon: (</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'            <svg className={\'baseIconClasses\'} fill="none" viewBox="0 0 14 14">'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> &lt;path</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                d="M3.85156 7.875L6.47656 10.5L10.8516 3.5"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>{'                stroke="#22C55E"'}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                strokeLinecap="round"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>
-              {'                strokeLinejoin="round"'}
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>{'                strokeWidth="1.5"'}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> /&gt;</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}> &lt;/svg&gt;</p>
-          </div>
-          <button
+            {["fn parse_count(input: &str) -> Result<usize, String> {", "    let trimmed = input.trim();", "    if trimmed.is_empty() {", "        return Err(\"missing count\".into());", "    }", "    let count = trimmed", "        .parse::<usize>()", "        .map_err(|error| error.to_string())?;", "    if count == 0 {", "        return Err(\"count must be positive\".into());", "    }", "    Ok(count)", "}", "// Proposed change: reject zero counts."].map((line, index) => (
+              <p key={index} style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400 }}>{line || "\u00a0"}</p>
+            ))}
+</div>
+          <div
             style={{
               position: "absolute",
               top: "calc(50% + 29.745px)",
@@ -216,7 +172,7 @@ const AiCodeReviews: React.FC = () => {
                 fontWeight: 500,
               }}
             >
-              Apply changes
+              Review changes
             </span>
             <span
               style={{
@@ -224,9 +180,9 @@ const AiCodeReviews: React.FC = () => {
                 fontWeight: 500,
               }}
             >
-              ⌘Y
+              Diff
             </span>
-          </button>
+          </div>
         </div>
       </div>
     </div>

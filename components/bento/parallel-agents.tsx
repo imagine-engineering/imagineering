@@ -89,24 +89,24 @@ const ParallelCodingAgents: React.FC<ParallelCodingAgentsProps> = ({ className =
   const agents = [
     {
       icon: <CheckmarkIcon />,
-      title: "Update buttons",
-      tokens: "12k tokens",
-      model: "o3",
-      branch: "pointer/update-pain...",
+      title: "Review parser diff",
+      tokens: "Example task",
+      model: "Agent",
+      branch: "copper/parser...",
     },
     {
       icon: <RefreshIcon />,
-      title: "Fix sanity issue",
-      tokens: "12k tokens",
-      model: "claude-sonnet-4",
-      branch: "pointer/update-pain...",
+      title: "Inspect test output",
+      tokens: "Example task",
+      model: "Agent",
+      branch: "copper/parser...",
     },
     {
       icon: <SparklesIcon />,
-      title: "Plan for seamless toast",
-      tokens: "30k tokens",
-      model: "o3",
-      branch: "pointer/update-pain...",
+      title: "Plan a Rust change",
+      tokens: "Example task",
+      model: "Agent",
+      branch: "copper/parser...",
     },
   ]
 
@@ -128,7 +128,7 @@ const ParallelCodingAgents: React.FC<ParallelCodingAgentsProps> = ({ className =
         } as React.CSSProperties
       }
       role="img"
-      aria-label="Parallel coding agents working on different tasks simultaneously"
+      aria-label="Static example task list showing proposed work and review"
     >
       {/* Inner content area with gradient background */}
       <div

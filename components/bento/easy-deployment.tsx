@@ -25,27 +25,25 @@ const DeploymentEasy: React.FC<DeploymentEasyProps> = ({ width = "100%", height 
    * Console log output (static for demo) – can be replaced via props
    * ---------------------------------------------------------- */
   const logLines = [
-    "[16:37:25.637] Running build in Washington, D.C., USA (East) – iad1",
-    "[16:37:25.638] Build machine configuration: 2 cores, 8 GB",
-    "[16:37:25.653] Retrieving list of deployment files...",
-    "[16:37:25.741] Previous build caches not available",
-    "[16:37:25.979] Downloading 84 deployment files...",
-    '[16:37:29.945] Running "vercel build"',
-    "[16:37:30.561] Vercel CLI 44.5.0",
-    '[16:37:30.880] Running "install" command: `bun install`...',
-    "[16:37:30.914] bun install v1.2.19 (aad3abea)",
-    "[16:37:30.940] Resolving dependencies",
-    "[16:37:34.436] Resolved, downloaded and extracted [1116]",
-    '[16:37:34.436] warn: incorrect peer dependency "react@19.1.0"',
-    "[16:37:37.265] Saved lockfile",
-    "[16:37:39.076] Next.js anonymous telemetry notice",
-    "[16:37:39.137] ▲ Next.js 15.2.4",
-    "[16:37:41.439] ✓ Compiled successfully",
-    "[16:37:53.979] ✓ Generated static pages",
-    "[16:38:00.585] ○ (Static) prerendered as static content",
-    "[16:38:01.099] Build Completed in /vercel/output [30s]",
-    "🚀 Deployment complete – Easy!",
-  ]
+    "Illustrative Cargo session",
+    "Example project: copper-demo",
+    "$ cargo check",
+    "    Checking copper-demo",
+    "    Finished dev profile",
+    "$ cargo test",
+    "    Running unit tests",
+    "running 3 tests",
+    "test parse_valid_input ... ok",
+    "test reject_invalid_input ... ok",
+    "test keep_error_context ... ok",
+    "test result: ok. 3 passed",
+    "$ cargo clippy",
+    "    Checking copper-demo",
+    "    Finished dev profile",
+    "Review diagnostics and command output.",
+    "This example does not execute commands."
+]
+
 
   return (
     <div
@@ -58,7 +56,7 @@ const DeploymentEasy: React.FC<DeploymentEasyProps> = ({ width = "100%", height 
         ...themeVars,
       }}
       role="img"
-      aria-label="Deployment console output with Deploy on Vercel button"
+      aria-label="Static Cargo console illustration with example output"
     >
       {/* -------------------------------------------------------- */}
       {/* Console / Terminal panel                                */}
@@ -123,7 +121,7 @@ const DeploymentEasy: React.FC<DeploymentEasyProps> = ({ width = "100%", height 
       {/* -------------------------------------------------------- */}
       {/* Call-to-action button                                   */}
       {/* -------------------------------------------------------- */}
-      <button
+      <div
         style={{
           position: "absolute",
           top: "calc(50% + 57.6px)",
@@ -149,8 +147,8 @@ const DeploymentEasy: React.FC<DeploymentEasyProps> = ({ width = "100%", height 
             "0px 42.075px 11.475px rgba(0, 0, 0, 0), 0px 26.775px 10.2px rgba(0, 0, 0, 0.01), 0px 15.3px 8.925px rgba(0, 0, 0, 0.05), 0px 6.375px 6.375px rgba(0, 0, 0, 0.09), 0px 1.275px 3.825px rgba(0, 0, 0, 0.1)",
         }}
       >
-        🚀 Deploy on Vercel
-      </button>
+        Cargo test example
+      </div>
     </div>
   )
 }

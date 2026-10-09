@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { sourceGuide } from "@/lib/content"
 
 export function CTASection() {
   return (
@@ -84,8 +85,8 @@ export function CTASection() {
               y2="263.369"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="white" stopOpacity="0" />
-              <stop offset="1" stopColor="white" stopOpacity="0.1" />
+              <stop stopColor="hsl(var(--secondary))" stopOpacity="0" />
+              <stop offset="1" stopColor="hsl(var(--secondary))" stopOpacity="0.1" />
             </linearGradient>
             <linearGradient
               id="paint3_linear_182_1049"
@@ -104,19 +105,19 @@ export function CTASection() {
       <div className="relative z-10 flex flex-col justify-start items-center gap-9 max-w-4xl mx-auto">
         <div className="flex flex-col justify-start items-center gap-4 text-center">
           <h2 className="text-foreground text-4xl md:text-5xl lg:text-[68px] font-semibold leading-tight md:leading-tight lg:leading-[76px] break-words max-w-[435px]">
-            Coding made effortless
+            Explore Copper for Rust
           </h2>
           <p className="text-muted-foreground text-sm md:text-base font-medium leading-[18.20px] md:leading-relaxed break-words max-w-2xl">
-            Hear how developers ship products faster, collaborate seamlessly, and build with confidence using Pointer's
-            powerful AI tools
+            Build Copper from source and explore its Rust tools. GitHub repository access is required.
+            Groovy and future language products remain planned.
           </p>
         </div>
-        <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer">
+        <Link href={sourceGuide} target="_blank" rel="noopener noreferrer">
           <Button
-            className="px-[30px] py-2 bg-secondary text-secondary-foreground text-base font-medium leading-6 rounded-[99px] shadow-[0px_0px_0px_4px_rgba(255,255,255,0.13)] hover:bg-secondary/90 transition-all duration-200"
+            className="px-[30px] py-2 bg-primary text-primary-foreground text-base font-medium leading-6 rounded-[99px] shadow-[0px_0px_0px_4px_hsl(var(--primary)/0.13)] hover:bg-primary/90 transition-all duration-200"
             size="lg"
           >
-            Signup for free
+            Read the build guide
           </Button>
         </Link>
       </div>

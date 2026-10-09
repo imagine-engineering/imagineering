@@ -7,25 +7,31 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  metadataBase: new URL('https://imagine.engineering'),
+  title: 'imagineering | Copper and Groovy development tools',
+  description: 'Explore Copper for Rust editing, Cargo, tests, debugging, Git, terminal, agents, and change review. Groovy JVM tools are in development. More language products are planned.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'imagineering | Copper and Groovy development tools',
+    description: 'Rust development in Copper. Groovy JVM tools are in development. More language products are planned.',
+    url: 'https://imagine.engineering',
+    siteName: 'imagineering',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'imagineering | Copper and Groovy development tools',
+    description: 'Rust development in Copper. Groovy JVM tools are in development. More language products are planned.',
+    images: ['/opengraph-image'],
+  },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/imagineering-icon-16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/imagineering-icon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/imagineering-icon-48.png', type: 'image/png', sizes: '48x48' },
     ],
-    apple: '/apple-icon.png',
+    shortcut: '/favicon.ico',
+    apple: { url: '/imagineering-apple-icon.png', sizes: '180x180', type: 'image/png' },
   },
 }
 

@@ -28,7 +28,7 @@ const RealtimeCodingPreviews: React.FC = () => {
         } as React.CSSProperties
       }
       role="img"
-      aria-label="Realtime Coding Previews interface showing split-screen code editor and live preview"
+      aria-label="Static illustration of code and a diagnostics panel"
     >
       {/* Left Panel - Code Editor */}
       <div
@@ -78,39 +78,10 @@ const RealtimeCodingPreviews: React.FC = () => {
               justifyContent: "center",
             }}
           >
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>switch (type) {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> case 'success':</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> return {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              border: theme === 'dark' ? 'border-[rgba(34,197,94,0.4)]' : 'border-green-200',
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> icon: (</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              &lt;svg className={"{baseIconClasses}"} fill="none" viewBox="0 0 14 14"&gt;
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> &lt;path</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              d="M3.85156 7.875L6.47656 10.5L10.8516 3.5"
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              stroke="var(--realtime-primary-color)"
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              strokeLinecap="round"
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              strokeLinejoin="round"
-            </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> strokeWidth="1.5"</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> /&gt;</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> &lt;/svg&gt;</p>
-          </div>
+            {["fn parse_count(input: &str) -> Result<usize, String> {", "    let trimmed = input.trim();", "    if trimmed.is_empty() {", "        return Err(\"missing count\".into());", "    }", "    let count = trimmed", "        .parse::<usize>()", "        .map_err(|error| error.to_string())?;", "    Ok(count)", "}", "", "fn main() {", "    println!(\"{:?}\", parse_count(\"42\"));", "}"].map((line, index) => (
+              <p key={index} style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>{line || "\u00a0"}</p>
+            ))}
+</div>
         </div>
       </div>
 
@@ -184,7 +155,7 @@ const RealtimeCodingPreviews: React.FC = () => {
                 whiteSpace: "pre",
               }}
             >
-              Download for macOS
+              Inspect diagnostics
             </div>
           </div>
         </div>

@@ -1,0 +1,37 @@
+.artwork {
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.zero {
+  opacity: 0.72;
+  animation: zero-breathe 32s ease-in-out infinite;
+}
+
+.one {
+  opacity: 0;
+  animation: one-breathe 32s ease-in-out infinite;
+}
+
+/* Slow crossfades change eight selected digits, without moving the grid. */
+@keyframes zero-breathe {
+  0%, 100% { opacity: 0.72; }
+  30% { opacity: 0.9; }
+  55%, 75% { opacity: 0; }
+}
+
+@keyframes one-breathe {
+  0%, 30%, 100% { opacity: 0; }
+  55% { opacity: 0.72; }
+  75% { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zero, .one {
+    animation: none;
+  }
+
+  .zero { opacity: 0.72; }
+  .one { opacity: 0; }
+}

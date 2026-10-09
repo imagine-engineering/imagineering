@@ -1,5 +1,5 @@
 import type React from "react"
-import { Search } from "lucide-react"
+import { Search, FileSearch, Files, Terminal, GitCompareArrows, ShieldCheck, Plug } from "lucide-react"
 
 interface McpConnectivityIllustrationProps {
   className?: string
@@ -8,19 +8,19 @@ interface McpConnectivityIllustrationProps {
 const McpConnectivityIllustration: React.FC<McpConnectivityIllustrationProps> = ({ className = "" }) => {
   // Integration data with new SVG paths
   const integrations = [
-    { name: "Figma", icon: "/images/mcp-integrations/figma.svg", installed: true },
-    { name: "Shadcn UI", icon: "/images/mcp-integrations/shadcn.svg" },
-    { name: "Next.js", icon: "/images/mcp-integrations/nextjs.svg", installed: true },
-    { name: "Tailwind CSS", icon: "/images/mcp-integrations/tailwind-css.svg" },
-    { name: "Resend", icon: "/images/mcp-integrations/resend.svg", installed: true },
-    { name: "React", icon: "/images/mcp-integrations/react.svg" },
+    { name: "Read files", Icon: FileSearch, installed: true },
+    { name: "Search project", Icon: Files },
+    { name: "Run a command", Icon: Terminal, installed: true },
+    { name: "Review a diff", Icon: GitCompareArrows },
+    { name: "Tool permissions", Icon: ShieldCheck, installed: true },
+    { name: "Configured MCP tools", Icon: Plug },
   ]
 
   return (
     <div
       className={`w-full h-full flex items-center justify-center p-4 relative ${className}`}
       role="img"
-      aria-label="MCP Connectivity component showcasing installed integrations list"
+      aria-label="Static illustration of agent tools and permissions"
     >
       {/* Main Message Box */}
       <div
@@ -78,7 +78,7 @@ const McpConnectivityIllustration: React.FC<McpConnectivityIllustrationProps> = 
                 whiteSpace: "nowrap",
               }}
             >
-              Search for servers
+              Agent tools · Example
             </span>
           </div>
           {/* Integration List */}
@@ -113,11 +113,7 @@ const McpConnectivityIllustration: React.FC<McpConnectivityIllustrationProps> = 
                     flexShrink: 0,
                   }}
                 >
-                  <img
-                    src={integration.icon || "/placeholder.svg"}
-                    alt={integration.name}
-                    className="w-full h-full object-contain opacity-70 grayscale" // Apply opacity and grayscale
-                  />
+                  <integration.Icon aria-hidden="true" className="w-full h-full object-contain opacity-70 grayscale" />
                 </div>
                 <span
                   style={{
@@ -153,7 +149,7 @@ const McpConnectivityIllustration: React.FC<McpConnectivityIllustrationProps> = 
                       whiteSpace: "nowrap",
                     }}
                   >
-                    Installed
+                    Review
                   </span>
                 </div>
               )}

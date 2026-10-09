@@ -6,35 +6,29 @@ import { ChevronDown } from "lucide-react"
 
 const faqData = [
   {
-    question: "What is Pointer and who is it for?",
-    answer:
-      "Pointer is an AI-powered development platform designed for developers, teams, and organizations who want toaccelerate their coding workflow. It's perfect for both individual developers looking to enhance their productivity and teams seeking seamless collaboration tools.",
+    "question": "What can I do with Copper?",
+    "answer": "Edit Rust and navigate with rust-analyzer. Explore Cargo targets, choose a task preset, and run builds, checks, Clippy, or selected tests. Use the terminal, stage Git hunks, debug with breakpoints and stepping, and review agent edits. These describe the development build; toolchains and debug adapters must be available on your project host. Doctest debugging is currently unavailable."
   },
   {
-    question: "How does Pointer's AI code review work?",
-    answer:
-      "Our AI analyzes your code in real-time, providing intelligent suggestions for improvements, catching potential bugs, and ensuring best practices. It learns from your coding patterns and adapts to your team's standards, making code reviews faster and more consistent.",
+    "question": "Is Groovy available?",
+    "answer": "Groovy remains planned, with no public installer or enabled release targets. Its Java and Kotlin development candidate has local macOS ARM64 evidence for cached Maven and Gradle builds, selected JUnit tests, and Java main debugging. Dependency inspection has partial provider coverage; test debugging, packaging, and broader platform qualification remain open. The product name does not establish support for the Groovy language, which remains a separate release decision."
   },
   {
-    question: "Can I integrate Pointer with my existing tools?",
-    answer:
-      "Yes! Pointer offers one-click integrations with popular development tools including GitHub, GitLab, VS Code, Slack, and many more. Our MCP connectivity allows you to easily manage and configure server access across your entire development stack.",
+    "question": "Can I choose an agent or model provider?",
+    "answer": "Copper lets you configure model providers, external agents through Agent Client Protocol, and MCP servers. Tool permissions can allow, deny, or require confirmation. Models, authentication, execution, and available tools depend on the integration you select."
   },
   {
-    question: "What's included in the free plan?",
-    answer:
-      "The free plan includes real-time code suggestions, basic integrations, single MCP server connection, up to 2 AI coding agents, and Vercel deployments with Pointer branding. It's perfect for individual developers getting started.",
+    "question": "How are agent changes reviewed?",
+    "answer": "Inspect tool activity, command output, and edit diffs. Copper's native agent provides keep/reject controls for individual hunks or the whole change, plus checkpoints to restore earlier code. External agents may provide different review and checkpoint support. The feature illustrations on this page are static examples."
   },
   {
-    question: "How do parallel coding agents work?",
-    answer:
-      "Our parallel coding agents can work on different parts of your codebase simultaneously, solving complex problems faster than traditional single-threaded approaches. You can launch multiple agents to handle different tasks like bug fixes, feature development, and code optimization concurrently.",
+    "question": "Which other language tools are planned?",
+    "answer": "imagineering plans development tools for C, C++, C#, Python, and other languages. These are roadmap directions. Product feature sets, release dates, downloads, and pricing are not specified here. Existing editor language support does not make a separate product available."
   },
   {
-    question: "Is my code secure with Pointer?",
-    answer:
-      "Absolutely. We use enterprise-grade security measures including end-to-end encryption, secure data transmission, and compliance with industry standards. Your code never leaves your secure environment without your explicit permission, and we offer on-premises deployment options for enterprise customers.",
-  },
+    "question": "Where can I read the source and build instructions?",
+    "answer": "The source and documentation links point to the existing GitHub repository, which currently requires access. The Copper build guide and Groovy development notes follow the dev branch. This page describes development features rather than promising them in an older release. No new download or pricing is announced here."
+  }
 ]
 
 interface FAQItemProps {
@@ -51,7 +45,17 @@ const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
   }
   return (
     <div
-      className={`w-full bg-[rgba(231,236,235,0.08)] shadow-[0px_2px_4px_rgba(0,0,0,0.16)] overflow-hidden rounded-[10px] outline outline-1 outline-border outline-offset-[-1px] transition-all duration-500 ease-out cursor-pointer`}
+      className={`w-full bg-card hover:bg-accent shadow-[0px_2px_4px_rgba(0,0,0,0.16)] overflow-hidden rounded-[10px] outline outline-1 outline-border outline-offset-[-1px] transition-all duration-500 ease-out cursor-pointer`}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      aria-label={question}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          onToggle()
+        }
+      }}
       onClick={handleClick}
     >
       <div className="w-full px-5 py-[18px] pr-4 flex justify-between items-center gap-5 text-left transition-all duration-300 ease-out">
@@ -63,6 +67,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
         </div>
       </div>
       <div
+        aria-hidden={!isOpen}
         className={`overflow-hidden transition-all duration-500 ease-out ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
         style={{
           transitionProperty: "max-height, opacity, padding",
@@ -99,7 +104,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-[18.20px] break-words">
-            Everything you need to know about Pointer and how it can transform your development workflow
+            Product status, agent configuration, and what is included in Copper.
           </p>
         </div>
       </div>

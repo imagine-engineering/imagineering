@@ -5,7 +5,7 @@ interface OneClickIntegrationsIllustrationProps {
 }
 
 const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustrationProps> = ({ className = "" }) => {
-  const themeVars = {
+  const themeVars: React.CSSProperties & Record<`--${string}`, string> = {
     "--oci-primary-color": "hsl(var(--primary))",
     "--oci-background-color": "hsl(var(--background))",
     "--oci-foreground-color": "hsl(var(--foreground))",
@@ -14,7 +14,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     "--oci-shadow-color": "rgba(0, 0, 0, 0.12)",
     "--oci-gradient-light-gray-start": "hsl(var(--foreground) / 0.2)",
     "--oci-gradient-light-gray-end": "transparent",
-  } as React.CSSProperties
+  }
 
   // Helper component for rendering each logo box
   const LogoBox: React.FC<{
@@ -54,8 +54,8 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     return <div style={boxStyle}>{logoSvg && <div style={innerContentStyle}>{logoSvg}</div>}</div>
   }
 
-  // SVG content for logos, with fill/stroke updated to use CSS variables
-  const FigmaLogo = (
+  // Preserve the original decorative glyphs and grid; no integration claims.
+  const ToolGlyphOne = (
     <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_254_68688)">
         <path
@@ -71,7 +71,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     </svg>
   )
 
-  const VercelLogo = (
+  const ToolGlyphTwo = (
     <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_254_68704)">
         <path
@@ -87,7 +87,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     </svg>
   )
 
-  const GitHubLogo = (
+  const ToolGlyphThree = (
     <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_254_68698)">
         <path
@@ -105,7 +105,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     </svg>
   )
 
-  const SlackLogo = (
+  const ToolGlyphFour = (
     <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_254_68690)">
         <path
@@ -121,7 +121,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
     </svg>
   )
 
-  const VSCodeLogo = (
+  const ToolGlyphFive = (
     <svg width="36" height="38" viewBox="0 0 36 38" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_254_68700)">
         <path
@@ -178,19 +178,19 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
 
       // Assign logos to specific positions
       if (row === 0 && col === 3) {
-        item.logoSvg = FigmaLogo
+        item.logoSvg = ToolGlyphOne
         item.isGradientBg = true
       } else if (row === 1 && col === 5) {
-        item.logoSvg = VercelLogo
+        item.logoSvg = ToolGlyphTwo
         item.isGradientBg = true
       } else if (row === 2 && col === 3) {
-        item.logoSvg = GitHubLogo
+        item.logoSvg = ToolGlyphThree
         item.isGradientBg = true
       } else if (row === 2 && col === 7) {
-        item.logoSvg = SlackLogo
+        item.logoSvg = ToolGlyphFour
         item.isGradientBg = true
       } else if (row === 3 && col === 5) {
-        item.logoSvg = VSCodeLogo
+        item.logoSvg = ToolGlyphFive
         item.isGradientBg = true
       }
       return item
@@ -203,7 +203,7 @@ const OneClickIntegrationsIllustration: React.FC<OneClickIntegrationsIllustratio
         ...themeVars,
       }}
       role="img"
-      aria-label="One-click integrations illustration showing a grid of connected squares"
+      aria-label="Decorative illustration of connected development tools"
     >
       {/* Background radial gradient */}
       <div

@@ -3,61 +3,58 @@
 import { useState } from "react"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { groovyGuide, sourceGuide } from "@/lib/content"
 
 export function PricingSection() {
-  const [isAnnual, setIsAnnual] = useState(true)
+  const [isOverview, setIsOverview] = useState(true)
 
   const pricingPlans = [
     {
-      name: "Free",
-      monthlyPrice: "$0",
-      annualPrice: "$0",
-      description: "Perfect for individuals starting their journey.",
-      features: [
-        "Real-time code suggestions",
-        "Basic integration logos",
-        "Single MCP server connection",
-        "Up to 2 AI coding agents",
-        "Vercel deployments with Pointer branding",
-      ],
-      buttonText: "Get Started",
-      buttonClass:
-        "bg-zinc-300 shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] outline outline-0.5 outline-[#1e29391f] outline-offset-[-0.5px] text-gray-800 text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-zinc-400",
+      name: "Future tools",
+      overviewLabel: "Planned",
+      toolingLabel: "More",
+      description: "Planned tools for more languages.",
+      toolingDescription: "Planned direction; no release dates.",
+      features: ["C", "C++", "C#", "Python", "Other languages"],
+      toolingFeatures: ["C · Planned", "C++ · Planned", "C# · Planned", "Python · Planned", "Other languages · Planned"],
+      buttonText: "Roadmap status",
+      href: "#faq-section",
+      kind: "future",
+      suffix: "tools",
+      featureLabel: "Planned language focus:",
+      buttonClass: "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] outline outline-0.5 outline-input outline-offset-[-0.5px] text-accent-foreground text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-secondary/20 active:bg-accent",
     },
     {
-      name: "Pro",
-      monthlyPrice: "$20",
-      annualPrice: "$16",
-      description: "Ideal for professionals.",
-      features: [
-        "Enhanced real-time previews",
-        "Unlimited integrations with custom logos",
-        "Multiple MCP server connections",
-        "Up to 10 concurrent AI coding agents",
-        "Collaborative coding with team chat",
-        "Advanced version control integrations",
-        "Priority email and chat support",
-      ],
-      buttonText: "Join now",
-      buttonClass:
-        "bg-primary-foreground shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] text-primary text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-primary-foreground/90",
+      name: "Copper",
+      overviewLabel: "Rust",
+      toolingLabel: "Cargo",
+      description: "Rust editing, from build to review.",
+      toolingDescription: "Edit, build, test, and review Rust.",
+      features: ["Rust editing and rust-analyzer", "Cargo targets, checks, and Clippy", "Selected tests and terminal output", "Breakpoints, stepping, and variables", "Git staging and hunk review", "Native agents, ACP, and MCP", "Inspect tool activity and changes"],
+      toolingFeatures: ["Symbols, navigation, and diagnostics", "Cargo panel and task presets", "Tests panel: run, cancel, and rerun", "Rust debugging with CodeLLDB", "Git diffs and an integrated terminal", "Configurable agents and permissions", "Checkpoints and keep/reject review"],
+      buttonText: "Copper build guide",
+      href: sourceGuide,
+      kind: "copper",
+      suffix: "product",
+      featureLabel: "Development features:",
+      buttonClass: "bg-primary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] text-primary-foreground text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-primary/90",
       popular: true,
     },
     {
-      name: "Ultra",
-      monthlyPrice: "$200",
-      annualPrice: "$160",
-      description: "Tailored solutions for teams.",
-      features: [
-        "Dedicated account support",
-        "Unlimited MCP server clusters",
-        "Unlimited AI coding agents",
-        "Enterprise-grade security and compliance",
-        "Priority deployments and SLA guarantees",
-      ],
-      buttonText: "Talk to Sales",
-      buttonClass:
-        "bg-secondary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] text-secondary-foreground text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-secondary/90",
+      name: "Groovy",
+      overviewLabel: "Planned",
+      toolingLabel: "JVM",
+      description: "In development for Java and Kotlin.",
+      toolingDescription: "JVM candidate; no public release.",
+      features: ["Planned JVM development product", "Java and Kotlin language tools", "Maven and Gradle wrapper Tasks", "Selected JUnit and Java debugging", "No public installer"],
+      toolingFeatures: ["Candidate: JDTLS and Kotlin LSP", "Candidate: dependency inspection", "Local build and JUnit evidence", "Java main debugging evidence", "Groovy language support unverified"],
+      buttonText: "Development status",
+      href: groovyGuide,
+      kind: "groovy",
+      suffix: "product",
+      featureLabel: "In the development candidate:",
+      buttonClass: "bg-secondary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] text-secondary-foreground text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-secondary/90 active:bg-secondary/90",
     },
   ]
 
@@ -66,33 +63,35 @@ export function PricingSection() {
       <div className="self-stretch relative flex flex-col justify-center items-center gap-2 py-0">
         <div className="flex flex-col justify-start items-center gap-4">
           <h2 className="text-center text-foreground text-4xl md:text-5xl font-semibold leading-tight md:leading-[40px]">
-            Pricing built for every developer
+            Tools for the languages you use
           </h2>
           <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-tight">
-            Choose a plan that fits your coding workflow, from individuals starting out to <br /> growing professionals
-            and large organizations.
+            Copper focuses on Rust. Groovy is in development for the JVM. <br />
+            C, C++, C#, Python, and other language tools are planned.
           </p>
         </div>
         <div className="pt-4">
-          <div className="p-0.5 bg-muted rounded-lg outline outline-1 outline-[#0307120a] outline-offset-[-1px] flex justify-start items-center gap-1 md:mt-0">
+          <div className="p-0.5 bg-muted rounded-lg outline outline-1 outline-border outline-offset-[-1px] flex justify-start items-center gap-1 md:mt-0">
             <button
-              onClick={() => setIsAnnual(true)}
-              className={`pl-2 pr-1 py-1 flex justify-start items-start gap-2 rounded-md ${isAnnual ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
+              onClick={() => setIsOverview(true)}
+              aria-pressed={isOverview}
+              className={`pl-2 pr-1 py-1 flex justify-start items-start gap-2 rounded-md ${isOverview ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
             >
               <span
-                className={`text-center text-sm font-medium leading-tight ${isAnnual ? "text-accent-foreground" : "text-zinc-400"}`}
+                className={`text-center text-sm font-medium leading-tight ${isOverview ? "text-accent-foreground" : "text-muted-foreground"}`}
               >
-                Annually
+                Overview
               </span>
             </button>
             <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-2 py-1 flex justify-start items-start rounded-md ${!isAnnual ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
+              onClick={() => setIsOverview(false)}
+              aria-pressed={!isOverview}
+              className={`px-2 py-1 flex justify-start items-start rounded-md ${!isOverview ? "bg-accent shadow-[0px_1px_1px_-0.5px_rgba(0,0,0,0.08)]" : ""}`}
             >
               <span
-                className={`text-center text-sm font-medium leading-tight ${!isAnnual ? "text-accent-foreground" : "text-zinc-400"}`}
+                className={`text-center text-sm font-medium leading-tight ${!isOverview ? "text-accent-foreground" : "text-muted-foreground"}`}
               >
-                Monthly
+                Tooling
               </span>
             </button>
           </div>
@@ -102,19 +101,20 @@ export function PricingSection() {
         {pricingPlans.map((plan) => (
           <div
             key={plan.name}
-            className={`flex-1 p-4 overflow-hidden rounded-xl flex flex-col justify-start items-start gap-6 ${plan.popular ? "bg-primary shadow-[0px_4px_8px_-2px_rgba(0,0,0,0.10)]" : "bg-gradient-to-b from-gray-50/5 to-gray-50/0"}`}
-            style={plan.popular ? {} : { outline: "1px solid hsl(var(--border))", outlineOffset: "-1px" }}
+            id={plan.kind}
+            className={`flex-1 p-4 overflow-hidden rounded-xl flex flex-col justify-start items-start gap-6 ${plan.popular ? "bg-primary/10 shadow-[0px_4px_8px_-2px_rgba(0,0,0,0.10)]" : "bg-gradient-to-b from-secondary/5 to-secondary/0"}`}
+            style={{ outline: "1px solid hsl(var(--border))", outlineOffset: "-1px" }}
           >
             <div className="self-stretch flex flex-col justify-start items-start gap-6">
               <div className="self-stretch flex flex-col justify-start items-start gap-8">
                 <div
-                  className={`w-full h-5 text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground" : "text-zinc-200"}`}
+                  className={`w-full h-5 text-sm font-medium leading-tight ${plan.popular ? "text-primary" : "text-foreground"}`}
                 >
                   {plan.name}
                   {plan.popular && (
-                    <div className="ml-2 px-2 overflow-hidden rounded-full justify-center items-center gap-2.5 inline-flex mt-0 py-0.5 bg-gradient-to-b from-primary-light/50 to-primary-light bg-white">
-                      <div className="text-center text-primary-foreground text-xs font-normal leading-tight break-words">
-                        Popular
+                    <div className="ml-2 px-2 overflow-hidden rounded-full justify-center items-center gap-2.5 inline-flex mt-0 py-0.5 bg-primary/15">
+                      <div className="text-center text-primary text-xs font-normal leading-tight break-words">
+                        Development
                       </div>
                     </div>
                   )}
@@ -122,74 +122,74 @@ export function PricingSection() {
                 <div className="self-stretch flex flex-col justify-start items-start gap-1">
                   <div className="flex justify-start items-center gap-1.5">
                     <div
-                      className={`relative h-10 flex items-center text-3xl font-medium leading-10 ${plan.popular ? "text-primary-foreground" : "text-zinc-50"}`}
+                      className={`relative h-10 flex items-center text-3xl font-medium leading-10 ${plan.popular ? "text-primary" : "text-foreground"}`}
                     >
-                      <span className="invisible">{isAnnual ? plan.annualPrice : plan.monthlyPrice}</span>
+                      <span className="invisible">{isOverview ? plan.overviewLabel : plan.toolingLabel}</span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
                         style={{
-                          opacity: isAnnual ? 1 : 0,
-                          transform: `scale(${isAnnual ? 1 : 0.8})`,
-                          filter: `blur(${isAnnual ? 0 : 4}px)`,
+                          opacity: isOverview ? 1 : 0,
+                          transform: `scale(${isOverview ? 1 : 0.8})`,
+                          filter: `blur(${isOverview ? 0 : 4}px)`,
                         }}
-                        aria-hidden={!isAnnual}
+                        aria-hidden={!isOverview}
                       >
-                        {plan.annualPrice}
+                        {plan.overviewLabel}
                       </span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
                         style={{
-                          opacity: !isAnnual ? 1 : 0,
-                          transform: `scale(${!isAnnual ? 1 : 0.8})`,
-                          filter: `blur(${!isAnnual ? 0 : 4}px)`,
+                          opacity: !isOverview ? 1 : 0,
+                          transform: `scale(${!isOverview ? 1 : 0.8})`,
+                          filter: `blur(${!isOverview ? 0 : 4}px)`,
                         }}
-                        aria-hidden={isAnnual}
+                        aria-hidden={isOverview}
                       >
-                        {plan.monthlyPrice}
+                        {plan.toolingLabel}
                       </span>
                     </div>
                     <div
-                      className={`text-center text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-zinc-400"}`}
+                      className={`text-center text-sm font-medium leading-tight text-muted-foreground`}
                     >
-                      /month
+                      {plan.suffix}
                     </div>
                   </div>
                   <div
-                    className={`self-stretch text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-zinc-400"}`}
+                    className={`self-stretch text-sm font-medium leading-tight text-muted-foreground`}
                   >
-                    {plan.description}
+                    {isOverview ? plan.description : plan.toolingDescription}
                   </div>
                 </div>
               </div>
-              <Button
+              <Button asChild
                 className={`self-stretch px-5 py-2 rounded-[40px] flex justify-center items-center ${plan.buttonClass}`}
               >
-                <div className="px-1.5 flex justify-center items-center gap-2">
+                <Link href={plan.href} className="px-1.5 flex justify-center items-center gap-2">
                   <span
-                    className={`text-center text-sm font-medium leading-tight ${plan.name === "Free" ? "text-gray-800" : plan.name === "Pro" ? "text-primary" : "text-zinc-950"}`}
+                    className={`text-center text-sm font-medium leading-tight ${plan.kind === "future" ? "text-accent-foreground" : plan.kind === "copper" ? "text-primary-foreground" : "text-secondary-foreground"}`}
                   >
                     {plan.buttonText}
                   </span>
-                </div>
+                </Link>
               </Button>
             </div>
             <div className="self-stretch flex flex-col justify-start items-start gap-4">
               <div
-                className={`self-stretch text-sm font-medium leading-tight ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}
+                className={`self-stretch text-sm font-medium leading-tight text-muted-foreground`}
               >
-                {plan.name === "Free" ? "Get Started today:" : "Everything in Free +"}
+                {plan.featureLabel}
               </div>
               <div className="self-stretch flex flex-col justify-start items-start gap-3">
-                {plan.features.map((feature) => (
+                {(isOverview ? plan.features : plan.toolingFeatures).map((feature) => (
                   <div key={feature} className="self-stretch flex justify-start items-center gap-2">
                     <div className="w-4 h-4 flex items-center justify-center">
                       <Check
-                        className={`w-full h-full ${plan.popular ? "text-primary-foreground" : "text-muted-foreground"}`}
+                        className={`w-full h-full text-muted-foreground`}
                         strokeWidth={2}
                       />
                     </div>
                     <div
-                      className={`leading-tight font-normal text-sm text-left ${plan.popular ? "text-primary-foreground" : "text-muted-foreground"}`}
+                      className={`leading-tight font-normal text-sm text-left text-muted-foreground`}
                     >
                       {feature}
                     </div>

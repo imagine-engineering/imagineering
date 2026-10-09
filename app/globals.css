@@ -4,42 +4,65 @@
 
 @layer base {
   :root {
-    /* Themeable Colors - Restored to Original Vibe */
-    --background: 210 11% 7%; /* #0f1211 */
-    --foreground: 160 14% 93%; /* #e7eceb */
+    /* Opaque logo pixels sampled from the supplied 200×200 PNG:
+       mint #78FFA1 (5,250 pixels), purple #CB6CE5 (3,643 pixels).
+       The image background is transparent; charcoal and neutrals are UI colours. */
+    --background: 165 10% 7.843137%; /* #121615 */
+    --foreground: 168 11.627907% 91.568627%; /* #E7ECEB */
 
-    --muted: 240 2% 16%; /* #27272a */
-    --muted-foreground: 160 14% 93% / 0.7; /* rgba(231, 236, 235, 0.7) */
-    --muted-foreground-light: 160 14% 93% / 0.5; /* rgba(231, 236, 235, 0.5) */
-    --muted-foreground-dark: 160 14% 93% / 0.6; /* rgba(231, 236, 235, 0.6) */
+    --muted: 142.5 9.523810% 16.470588%; /* #262E29 */
+    --muted-foreground: 146.666667 6.569343% 73.137255%; /* #B6BFBA */
+    --muted-foreground-light: 143.076923 6.951872% 63.333333%; /* #9BA8A0 */
+    --muted-foreground-dark: 146.666667 6.569343% 73.137255%;
 
-    --card: 220 17% 98% / 0.01;
-    --card-foreground: 160 14% 93%;
+    --card: 140 12.328767% 14.313725%; /* #202923 */
+    --card-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
 
-    --popover: 210 11% 7%;
-    --popover-foreground: 160 14% 93%;
+    --primary: 138.222222 100% 73.529412%; /* #78FFA1 */
+    --primary-foreground: var(--background);
+    --primary-dark: 138.222222 52% 55%; /* restrained mint for gradient stops */
+    --primary-light: 138.222222 35% 82%; /* softer mint for surfaces */
 
-    /* Primary Accent Colors */
-    --primary: 165 96% 71%; /* #78fcd6 */
-    --primary-foreground: 160 8% 6%; /* #0d0f0e */
-    --primary-dark: 160 100% 50%; /* #00ffb6 */
-    --primary-light: 160 48% 87%; /* New variable for lighter teal/green shades */
+    --secondary: 287.107438 69.942197% 66.078431%; /* #CB6CE5 */
+    --secondary-foreground: var(--background);
+    --accent: 283.333333 18.367347% 19.215686%; /* #35283A: quiet purple tint */
+    --accent-foreground: var(--foreground);
 
-    /* Secondary Accent Colors (for buttons, etc.) */
-    --secondary: 160 14% 93%; /* #e7eceb */
-    --secondary-foreground: 165 14% 8%; /* #141a18 */
-
-    --accent: 240 2% 25%; /* #3f3f42 */
-    --accent-foreground: 240 2% 96%; /* #f4f4f5 */
-
-    --border: 240 100% 100% / 0.08; /* rgba(255, 255, 255, 0.08) */
-    --border-light: 210 17% 6% / 0.1; /* rgba(16,24,40,0.1) */
-    --border-dark: 210 17% 6% / 0.05; /* rgba(16,24,40,0.05) */
-
-    --ring: 165 96% 71%;
+    --border: 138.222222 100% 73.529412% / 0.18;
+    --border-light: 138.222222 100% 73.529412% / 0.12;
+    --border-dark: 138.222222 100% 73.529412% / 0.08;
+    --input: 143.076923 6.951872% 63.333333%;
+    --ring: var(--primary);
+    --hero-base: 165 5.882353% 13.333333%; /* #202423 */
 
     --radius: 0.5rem;
   }
+}
+
+/* Paint-only states: no changes to control dimensions or document flow. */
+:root :is(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 4px;
+}
+
+a:not([class*="bg-"]):hover { color: hsl(var(--primary)); }
+a:not([class*="bg-"]):active { color: hsl(var(--secondary)); }
+
+button[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px hsl(var(--primary));
+}
+
+[role="button"][aria-expanded="true"] {
+  background-color: hsl(var(--accent));
+}
+
+:root button:disabled {
+  opacity: 1;
+  color: hsl(var(--muted-foreground));
+  background: hsl(var(--muted));
+  border-color: hsl(var(--input));
 }
 
 @layer base {
