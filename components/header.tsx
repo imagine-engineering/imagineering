@@ -8,7 +8,7 @@ import { Menu } from "lucide-react"
 import Link from "next/link"
 import { documentation } from "@/lib/content"
 import { useRef, useState } from "react"
-import { SiteLogo } from "./site-logo"
+import { SiteWordmark } from "./site-wordmark"
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -38,9 +38,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
-            <Link href="/" className="inline-flex items-center gap-3 text-foreground text-xl font-semibold">
-              <SiteLogo priority />
-              imagineering
+            <Link href="/" aria-label="imagineering" className="inline-flex items-center gap-3 text-foreground text-xl font-semibold">
+              <SiteWordmark />
             </Link>
           </div>
           <nav className="hidden md:flex items-center gap-2">

@@ -1,6 +1,7 @@
 import { Globe, Github, BookOpen } from "lucide-react"
 import { companyWebsite, repository, documentation, sourceGuide, contributionGuide, license } from "@/lib/content"
-import { SiteLogo } from "./site-logo"
+import Link from "next/link"
+import { SiteWordmark } from "./site-wordmark"
 
 const groups = [
   { title: "Products", links: [
@@ -22,12 +23,9 @@ export function FooterSection() {
   return (
     <footer className="w-full max-w-[1320px] mx-auto px-5 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-0 py-10 md:py-[70px]">
       <div className="flex flex-col justify-start items-start gap-8 p-4 md:p-8">
-        <div className="flex gap-3 items-stretch justify-center">
-          <span className="relative h-4 w-7 shrink-0">
-            <span className="absolute top-1/2 -translate-y-1/2"><SiteLogo /></span>
-          </span>
-          <div className="text-center text-foreground text-xl font-semibold leading-4">imagineering</div>
-        </div>
+        <Link href="/" aria-label="imagineering" className="relative block h-4 w-40 shrink-0">
+          <span className="absolute top-1/2 -translate-y-1/2"><SiteWordmark /></span>
+        </Link>
         <p className="text-foreground/90 text-sm font-medium leading-[18px] text-left">
           Rust tools in Copper. JVM tools in development.<br />Repository links require GitHub access.
         </p>
