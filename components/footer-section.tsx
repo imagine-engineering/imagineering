@@ -1,21 +1,21 @@
 import { Globe, Github, BookOpen } from "lucide-react"
-import { companyWebsite, repository, documentation, sourceGuide, contributionGuide, license } from "@/lib/content"
+import { companyWebsite, repository, documentation, support, sourceGuide, contributionGuide, license } from "@/lib/content"
 import Link from "next/link"
 import { SiteWordmark } from "./site-wordmark"
 
 const groups = [
   { title: "Products", links: [
-    ["Copper", "#copper"], ["Groovy · Planned", "#groovy"], ["Future tools", "#future"],
-    ["Features", "#features-section"], ["Workflows", "#workflows-section"],
+    ["Copper", "/#copper"], ["Groovy · Planned", "/#groovy"], ["Future tools", "/#future"],
+    ["Features", "/#features-section"], ["Workflows", "/#workflows-section"],
   ] },
   { title: "Company", links: [
-    ["imagineering", companyWebsite], ["Planned languages", "#future"],
-    ["Product overview", "#products-section"], ["Product status", "#faq-section"],
+    ["imagineering", companyWebsite], ["Planned languages", "/#future"],
+    ["Product overview", "/#products-section"], ["Product status", "/#faq-section"],
     ["Contributing", contributionGuide],
   ] },
   { title: "Resources", links: [
-    ["Documentation", documentation], ["Copper build guide", sourceGuide],
-    ["Source repository", repository], ["License", license], ["FAQs", "#faq-section"],
+    ["Documentation", documentation], ["Help and support", support], ["Copper build guide", sourceGuide],
+    ["Source repository", repository], ["License", license], ["FAQs", "/#faq-section"],
   ] },
 ]
 
