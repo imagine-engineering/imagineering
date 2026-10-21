@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "check:export": "python3 scripts/check-export.py"
+    "check:export": "python3 scripts/check-export.py",
+    "preview": "python3 -m http.server 3110 --bind 127.0.0.1 --directory out",
+    "test:docs": "python3 -m unittest discover -s scripts -p \"test_*.py\""
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

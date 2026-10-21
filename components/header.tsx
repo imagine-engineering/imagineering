@@ -6,22 +6,25 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { documentation } from "@/lib/content"
 import { useRef, useState } from "react"
 import { SiteWordmark } from "./site-wordmark"
 
 export function Header() {
+  const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const navigationTarget = useRef<HTMLElement | null>(null)
   const navItems = [
-    { name: "Features", href: "#features-section" },
-    { name: "Products", href: "#products-section" },
-    { name: "Workflows", href: "#workflows-section" },
+    { name: "Features", href: "/#features-section" },
+    { name: "Products", href: "/#products-section" },
+    { name: "Workflows", href: "/#workflows-section" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname !== "/") return
     e.preventDefault()
-    const targetId = href.substring(1) // Remove '#' from href
+    const targetId = href.substring(href.indexOf("#") + 1) // Remove '#' from href
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
       if (menuOpen) {
@@ -56,11 +59,9 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Link href={documentation} target="_blank" rel="noopener noreferrer" className="hidden md:block">
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
-              Read the docs
-            </Button>
-          </Link>
+          <Button asChild className="hidden md:inline-flex bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
+            <Link href={documentation}>Read the docs</Link>
+          </Button>
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon" className="text-foreground">
@@ -94,11 +95,9 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
-                <Link href={documentation} target="_blank" rel="noopener noreferrer" className="w-full mt-4">
-                  <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
-                    Read the docs
-                  </Button>
-                </Link>
+                <Button asChild className="w-full mt-4 bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm">
+                  <Link href={documentation} onClick={() => setMenuOpen(false)}>Read the docs</Link>
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>

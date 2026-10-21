@@ -27,7 +27,7 @@ const faqData = [
   },
   {
     "question": "Where can I read the source and build instructions?",
-    "answer": "The source and documentation links point to the existing GitHub repository, which currently requires access. The Copper build guide and Groovy development notes follow the dev branch. This page describes development features rather than promising them in an older release. No new download or pricing is announced here."
+    "answer": "The website documentation covers product status and source setup. Detailed application source and provider guides link to the existing GitHub repository, which currently requires access; these source guides follow the dev branch. This page describes development features rather than promising them in an older release. No new download or pricing is announced here."
   }
 ]
 

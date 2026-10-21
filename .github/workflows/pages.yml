@@ -2,8 +2,22 @@ name: Deploy GitHub Pages
 
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Trusted private release_docs workflow run (coordination only)
+        type: string
+        default: ''
+      release_tag:
+        description: Published stable Copper tag; empty selects latest
+        type: string
+        default: ''
+      force:
+        description: Force rebuild and publication even when inputs are unchanged
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -13,47 +27,121 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    if: github.event_name == 'pull_request' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+  check:
+    if: github.event_name == 'pull_request' || (github.ref == 'refs/heads/main' && inputs.source_run_id == '')
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: read
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: pnpm
-      - name: Install locked dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Configure Pages
-        if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@v6
-      - name: Build and validate types
-        run: pnpm build
-      - name: Check TypeScript
-        run: pnpm typecheck
-      - name: Verify exported routes and assets
-        run: pnpm check:export
-      - name: Upload static site
-        if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v5
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm typecheck
+      - run: pnpm check:export
+      - run: pnpm test:docs
+      - name: Downloadable PR preview (Pages does not provide hosted PR previews)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7
         with:
+          name: website-preview-${{ github.event.pull_request.number }}
           path: out
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  request:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && inputs.source_run_id == ''
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/create-github-app-token@v3
+        id: source-token
+        with:
+          app-id: ${{ secrets.SOURCE_DOCS_APP_ID }}
+          private-key: ${{ secrets.SOURCE_DOCS_APP_PRIVATE_KEY }}
+          owner: simtropolis
+          repositories: made
+      - name: Request released docs with the current website inputs
+        run: python3 scripts/release_docs.py request
+        env:
+          GH_TOKEN: ${{ steps.source-token.outputs.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          FORCE: ${{ inputs.force || false }}
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-    needs: build
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.source_run_id != ''
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
+      contents: read
       pages: write
       id-token: write
+      deployments: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/create-github-app-token@v3
+        id: source-token
+        with:
+          app-id: ${{ secrets.SOURCE_DOCS_APP_ID }}
+          private-key: ${{ secrets.SOURCE_DOCS_APP_PRIVATE_KEY }}
+          owner: simtropolis
+          repositories: made
+      - name: Receive only authenticated public-output artifact
+        run: python3 scripts/release_docs.py accept --run-id "$SOURCE_RUN_ID" --website-sha "$GITHUB_SHA"
+        env:
+          GH_TOKEN: ${{ steps.source-token.outputs.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      - name: Validate exported links, navigation and assets before deployment
+        run: python3 scripts/check-export.py
+      - name: Compare with last successful verified documentation deployment
+        id: decision
+        run: python3 scripts/release_docs.py decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Configure Pages
+        if: steps.decision.outputs.publish == 'true'
+        uses: actions/configure-pages@v6
+      - name: Upload checked static site
+        if: steps.decision.outputs.publish == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+      - name: Deploy through the existing Pages host
+        if: steps.decision.outputs.publish == 'true'
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Verify public documentation routes and deployed hashes
+        if: steps.decision.outputs.publish == 'true'
+        run: |
+          SOURCE_SHA="$(python3 -c 'import json; print(json.load(open("out/.well-known/site-build.json"))["source_sha"])')"
+          INPUT_KEY="$(python3 -c 'import json; print(json.load(open("out/.well-known/site-build.json"))["input_key"])')"
+          python3 scripts/site_publication.py verify --revision "$SOURCE_SHA" --input-key "$INPUT_KEY" --attempts 12 --delay 10 --report publication-verification.json
+      - name: Record success only after public verification
+        if: steps.decision.outputs.publish == 'true'
+        run: python3 scripts/release_docs.py record
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Retain publication verification evidence
+        if: always() && steps.decision.outputs.publish == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: documentation-publication-verification
+          path: publication-verification.json
+          if-no-files-found: warn
+          retention-days: 90
