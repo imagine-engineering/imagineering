@@ -20,9 +20,6 @@ export function HeroSection() {
         <h1 className="text-foreground text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight">
           Focused tools for developers and engineers
         </h1>
-        <p className="text-muted-foreground text-base md:text-base lg:text-lg font-medium leading-relaxed max-w-lg mx-auto">
-          imagineering builds Made: shared tools for Copper, Groovy and Sim.
-        </p>
       </div>
 
       <Button

@@ -57,4 +57,4 @@ The public product identities are Copper, Groovy and Sim. The user confirmed
 that Forge is now Sim; stale catalog naming does not introduce a separate
 game-development claim. The canonical repository currently has no published
 release assets. The genuine Copper screenshot and historical capture revision
-above remain unchanged. See `CONTENT_REVIEW.md` for product evidence and scope.
+above remain unchanged.
