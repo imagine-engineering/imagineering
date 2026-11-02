@@ -1,4 +1,4 @@
-import { Layers } from "lucide-react"
+import Image from "next/image"
 
 export function LargeTestimonial() {
   return (
@@ -13,11 +13,7 @@ export function LargeTestimonial() {
                 }
               </div>
               <div className="flex justify-start items-center gap-5">
-                <Layers
-                  aria-hidden="true"
-                  className="w-12 h-12 relative rounded-full"
-                  style={{ border: "1px solid hsl(var(--border))" }}
-                />
+                <Image src="/images/copper-logo.png" alt="" width={48} height={48} className="w-12 h-12 relative rounded-full object-contain" />
                 <div className="flex flex-col justify-start items-start">
                   <div className="text-foreground text-base font-medium leading-6">Copper</div>
                   <div className="text-muted-foreground text-sm font-normal leading-6">{"Rust development"}</div>

@@ -9,8 +9,8 @@ export function GET() {
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%', height: '100%', padding: 72, background: '#121615', color: '#e7eceb' }}>
         <div style={{ display: 'flex', fontSize: 32 }}>imagineering</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', fontSize: 72, fontWeight: 600 }}>Focused tools for developers</div>
-          <div style={{ display: 'flex', fontSize: 30, color: '#78FFA1' }}>Copper for Rust · Groovy JVM tools in development</div>
+          <div style={{ display: 'flex', fontSize: 72, fontWeight: 600 }}>Development with Made</div>
+          <div style={{ display: 'flex', fontSize: 30, color: '#78FFA1' }}>Copper · Groovy · Sim · Source and development status</div>
         </div>
         <div style={{ display: 'flex', fontSize: 24, color: '#B6BFBA' }}>imagine.engineering</div>
       </div>

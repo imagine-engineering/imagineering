@@ -5,11 +5,11 @@ import { SiteWordmark } from "./site-wordmark"
 
 const groups = [
   { title: "Products", links: [
-    ["Copper", "#copper"], ["Groovy · Planned", "#groovy"], ["Future tools", "#future"],
+    ["Copper", "#copper"], ["Groovy · Planned", "#groovy"], ["Sim · Opt-in", "#sim"],
     ["Features", "#features-section"], ["Workflows", "#workflows-section"],
   ] },
   { title: "Company", links: [
-    ["imagineering", companyWebsite], ["Planned languages", "#future"],
+    ["imagineering", companyWebsite], ["Shared features", "#features-section"],
     ["Product overview", "#products-section"], ["Product status", "#faq-section"],
     ["Contributing", contributionGuide],
   ] },
@@ -27,7 +27,7 @@ export function FooterSection() {
           <span className="absolute top-1/2 -translate-y-1/2"><SiteWordmark /></span>
         </Link>
         <p className="text-foreground/90 text-sm font-medium leading-[18px] text-left">
-          Rust tools in Copper. JVM tools in development.<br />Repository links require GitHub access.
+          Made by imagineering. Focused product tools.<br />Copper · Groovy · Sim.
         </p>
         <div className="flex justify-start items-start gap-3">
           <a href={companyWebsite} aria-label="imagineering website" className="w-4 h-4 flex items-center justify-center">
