@@ -16,7 +16,7 @@ export function Header() {
   const navItems = [
     { name: "Features", href: "#features-section" },
     { name: "Products", href: "#products-section" },
-    { name: "Workflows", href: "#workflows-section" },
+    { name: "Roadmap", href: "#roadmap-section" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -79,7 +79,7 @@ export function Header() {
             >
               <SheetHeader>
                 <SheetTitle className="text-left text-xl font-semibold text-foreground">Navigation</SheetTitle>
-                <SheetDescription className="sr-only">Explore Made, Copper, Groovy, Sim and developer workflows.</SheetDescription>
+                <SheetDescription className="sr-only">Explore Made, Copper, Groovy, Sim and product roadmaps.</SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-6">
                 {navItems.map((item) => (

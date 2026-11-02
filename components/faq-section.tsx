@@ -1,12 +1,13 @@
 "use client"
 
 import { productFAQs } from "@/lib/product-content"
+import { roadmapFAQ } from "@/lib/product-roadmaps"
 
 import type React from "react"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 
-const faqData = productFAQs
+const faqData = [...productFAQs, roadmapFAQ]
 
 interface FAQItemProps {
   question: string
@@ -81,7 +82,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-[18.20px] break-words">
-            Made’s shared features, product availability and setup.
+            Made’s shared features, product availability and development plans.
           </p>
         </div>
       </div>
