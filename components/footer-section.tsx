@@ -9,7 +9,7 @@ const groups = [
     ["Features", "#features-section"], ["Workflows", "#workflows-section"],
   ] },
   { title: "Company", links: [
-    ["imagineering", companyWebsite], ["Shared features", "#features-section"],
+    ["imagineering", companyWebsite], ["Roadmaps", "#roadmap-section"],
     ["Product overview", "#products-section"], ["Product status", "#faq-section"],
     ["Contributing", contributionGuide],
   ] },

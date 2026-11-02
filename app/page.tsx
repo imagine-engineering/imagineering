@@ -1,3 +1,4 @@
+import { ProductRoadmap } from "@/components/product-roadmap"
 import { HeroSection } from "@/components/hero-section"
 import { DashboardPreview } from "@/components/dashboard-preview"
 import { SocialProof } from "@/components/social-proof"
@@ -45,6 +46,9 @@ export default function LandingPage() {
           delay={0.2}
         >
           <TestimonialGridSection />
+        </AnimatedSection>
+        <AnimatedSection id="roadmap-section" className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
+          <ProductRoadmap />
         </AnimatedSection>
         <AnimatedSection id="faq-section" className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
           <FAQSection />

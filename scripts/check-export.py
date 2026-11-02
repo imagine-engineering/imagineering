@@ -63,6 +63,16 @@ canonical = [a["href"] for tag, a in home.elements if tag == "link" and a.get("r
 assert canonical == [ORIGIN + "/"], canonical
 assert metadata["og:url"].rstrip("/") == ORIGIN
 assert "Made" in metadata.get("og:title", ""), "Homepage metadata must identify Made"
+roadmap_tabs = {
+    attributes.get("id", "").rsplit("-trigger-", 1)[-1]
+    for tag, attributes in home.elements
+    if attributes.get("role") == "tab"
+}
+assert roadmap_tabs == {"copper", "groovy", "sim"}, "Wrong roadmap product identities"
+assert "roadmap-section" in home.ids, "Missing roadmap navigation target"
+home_copy = (OUT / "index.html").read_text()
+assert "Source evidence" not in home_copy and "In source today" not in home_copy, "Roadmap must describe features, not source evidence"
+
 assert {"copper", "groovy", "sim"}.issubset(home.ids), "Missing product sections"
 assert "Forge" not in (OUT / "index.html").read_text(), "Obsolete product identity remains"
 for html in html_files:
