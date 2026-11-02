@@ -22,7 +22,13 @@ export function CTASection() {
             width="850"
             height="493"
           >
-            <rect x="269.215" y="27.4062" width="849.57" height="492.311" fill="url(#paint0_linear_182_1049)" />
+            <rect
+              x="269.215"
+              y="27.4062"
+              width="849.57"
+              height="492.311"
+              fill="url(#paint0_linear_182_1049)"
+            />
           </mask>
           <g mask="url(#mask0_182_1049)">
             <g filter="url(#filter0_f_182_1049)">
@@ -35,8 +41,20 @@ export function CTASection() {
                 fillOpacity="0.8"
               />
             </g>
-            <ellipse cx="694" cy="-91.5385" rx="670.109" ry="354.908" fill="url(#paint2_linear_182_1049)" />
-            <ellipse cx="694" cy="-93.0414" rx="670.109" ry="354.908" fill="url(#paint3_linear_182_1049)" />
+            <ellipse
+              cx="694"
+              cy="-91.5385"
+              rx="670.109"
+              ry="354.908"
+              fill="url(#paint2_linear_182_1049)"
+            />
+            <ellipse
+              cx="694"
+              cy="-93.0414"
+              rx="670.109"
+              ry="354.908"
+              fill="url(#paint3_linear_182_1049)"
+            />
           </g>
           <defs>
             <filter
@@ -49,8 +67,16 @@ export function CTASection() {
               colorInterpolationFilters="sRGB"
             >
               <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-              <feGaussianBlur stdDeviation="129" result="effect1_foregroundBlur_182_1049" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="129"
+                result="effect1_foregroundBlur_182_1049"
+              />
             </filter>
             <linearGradient
               id="paint0_linear_182_1049"
@@ -61,9 +87,21 @@ export function CTASection() {
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="hsl(var(--background))" stopOpacity="0" />
-              <stop offset="0.2" stopColor="hsl(var(--background))" stopOpacity="0.8" />
-              <stop offset="0.8" stopColor="hsl(var(--background))" stopOpacity="0.8" />
-              <stop offset="1" stopColor="hsl(var(--background))" stopOpacity="0" />
+              <stop
+                offset="0.2"
+                stopColor="hsl(var(--background))"
+                stopOpacity="0.8"
+              />
+              <stop
+                offset="0.8"
+                stopColor="hsl(var(--background))"
+                stopOpacity="0.8"
+              />
+              <stop
+                offset="1"
+                stopColor="hsl(var(--background))"
+                stopOpacity="0"
+              />
             </linearGradient>
             <radialGradient
               id="paint1_radial_182_1049"
@@ -75,7 +113,11 @@ export function CTASection() {
             >
               <stop offset="0.1294" stopColor="hsl(var(--primary-dark))" />
               <stop offset="0.2347" stopColor="hsl(var(--primary))" />
-              <stop offset="0.3" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              <stop
+                offset="0.3"
+                stopColor="hsl(var(--primary))"
+                stopOpacity="0"
+              />
             </radialGradient>
             <linearGradient
               id="paint2_linear_182_1049"
@@ -86,7 +128,11 @@ export function CTASection() {
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="hsl(var(--secondary))" stopOpacity="0" />
-              <stop offset="1" stopColor="hsl(var(--secondary))" stopOpacity="0.1" />
+              <stop
+                offset="1"
+                stopColor="hsl(var(--secondary))"
+                stopOpacity="0.1"
+              />
             </linearGradient>
             <linearGradient
               id="paint3_linear_182_1049"
@@ -105,21 +151,23 @@ export function CTASection() {
       <div className="relative z-10 flex flex-col justify-start items-center gap-9 max-w-4xl mx-auto">
         <div className="flex flex-col justify-start items-center gap-4 text-center">
           <h2 className="text-foreground text-4xl md:text-5xl lg:text-[68px] font-semibold leading-tight md:leading-tight lg:leading-[76px] break-words max-w-[435px]">
-            Explore Copper for Rust
+            Explore Made’s tools
           </h2>
           <p className="text-muted-foreground text-sm md:text-base font-medium leading-[18.20px] md:leading-relaxed break-words max-w-2xl">
-            Build Copper from source and explore its Rust tools. GitHub repository access is required.
-            Groovy and future language products remain planned.
+            Start with Copper’s source-build guide. Groovy remains planned, and
+            Sim requires an explicit build option. The canonical repository is
+            public; no release downloads are published there.
           </p>
         </div>
-        <Link href={sourceGuide} target="_blank" rel="noopener noreferrer">
-          <Button
-            className="px-[30px] py-2 bg-primary text-primary-foreground text-base font-medium leading-6 rounded-[99px] shadow-[0px_0px_0px_4px_hsl(var(--primary)/0.13)] hover:bg-primary/90 transition-all duration-200"
-            size="lg"
-          >
+        <Button
+          asChild
+          className="px-[30px] py-2 bg-primary text-primary-foreground text-base font-medium leading-6 rounded-[99px] shadow-[0px_0px_0px_4px_hsl(var(--primary)/0.13)] hover:bg-primary/90 transition-all duration-200"
+          size="lg"
+        >
+          <Link href={sourceGuide} target="_blank" rel="noopener noreferrer">
             Read the build guide
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </section>
   )

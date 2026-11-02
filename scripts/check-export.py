@@ -62,6 +62,16 @@ metadata = {a.get("property", a.get("name")): a.get("content") for tag, a in hom
 canonical = [a["href"] for tag, a in home.elements if tag == "link" and a.get("rel") == "canonical"]
 assert canonical == [ORIGIN + "/"], canonical
 assert metadata["og:url"].rstrip("/") == ORIGIN
+assert "Made" in metadata.get("og:title", ""), "Homepage metadata must identify Made"
+assert {"copper", "groovy", "sim"}.issubset(home.ids), "Missing product sections"
+assert "Forge" not in (OUT / "index.html").read_text(), "Obsolete product identity remains"
+for html in html_files:
+    for tag, attributes in Document(html.read_text()).elements:
+        href = attributes.get("href", "")
+        assert not href.startswith("https://github.com/simtropolis/made"), f"Stale repository link: {href}"
+        if href.startswith("https://github.com/imagine-engineering/made/"):
+            assert "/blob/dev/" not in href and "/tree/dev/" not in href, f"Absent source branch: {href}"
+
 for name in ("og:image", "twitter:image"):
     url = urlsplit(metadata[name])
     assert url.netloc == "imagine.engineering" and url.path.endswith(".png"), metadata[name]

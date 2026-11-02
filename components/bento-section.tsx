@@ -5,6 +5,8 @@ import MCPConnectivityIllustration from "./bento/mcp-connectivity-illustration" 
 import EasyDeployment from "./bento/easy-deployment"
 import ParallelCodingAgents from "./bento/parallel-agents" // Updated import
 
+import { sharedFeatures } from "@/lib/product-content"
+
 import type { ComponentType } from "react"
 
 const BentoCard = ({ title, description, Component }: { title: string; description: string; Component: ComponentType }) => (
@@ -36,38 +38,8 @@ const BentoCard = ({ title, description, Component }: { title: string; descripti
 )
 
 export function BentoSection() {
-  const cards = [
-    {
-      title: "Review proposed edits.",
-      description: "Inspect an agent diff and choose which changes to keep.",
-      Component: AiCodeReviews,
-    },
-    {
-      title: "Rust language tools",
-      description: "Navigate symbols and inspect rust-analyzer diagnostics.",
-      Component: RealtimeCodingPreviews,
-    },
-    {
-      title: "Tools in one application",
-      description: "Stage Git hunks, use the terminal, and step through Rust.",
-      Component: OneClickIntegrationsIllustration,
-    },
-    {
-      title: "Configurable agent tools",
-      description: "Connect MCP servers and review tool permissions.",
-      Component: MCPConnectivityIllustration, // Updated component
-    },
-    {
-      title: "Inspect agent activity", // Swapped position
-      description: "Follow tool calls, command output, and proposed edits.",
-      Component: ParallelCodingAgents, // Updated component
-    },
-    {
-      title: "Cargo and test tools", // Swapped position
-      description: "Explore Cargo targets, run checks, and select Rust tests.",
-      Component: EasyDeployment,
-    },
-  ]
+  const illustrations = [AiCodeReviews, RealtimeCodingPreviews, OneClickIntegrationsIllustration, MCPConnectivityIllustration, ParallelCodingAgents, EasyDeployment]
+  const cards = sharedFeatures.map((feature, index) => ({ ...feature, Component: illustrations[index] }))
 
   return (
     <section className="w-full px-5 flex flex-col justify-center items-center overflow-visible bg-transparent">
@@ -76,11 +48,10 @@ export function BentoSection() {
         <div className="self-stretch py-8 md:py-14 flex flex-col justify-center items-center gap-2 z-10">
           <div className="flex flex-col justify-start items-center gap-4">
             <h2 className="w-full max-w-[655px] text-center text-foreground text-4xl md:text-6xl font-semibold leading-tight md:leading-[66px]">
-              Rust work, from edit to review
+              Shared tools in Made
             </h2>
             <p className="w-full max-w-[600px] text-center text-muted-foreground text-lg md:text-xl font-medium leading-relaxed">
-              Copper combines Rust tooling with agent activity and review.
-              Inspect the output before deciding which changes to keep.
+              Made combines editing, language intelligence and project tools with agent activity and review. Product builds select their language tools; providers and debug adapters need setup.
             </p>
           </div>
         </div>

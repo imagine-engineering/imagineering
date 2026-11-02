@@ -1,35 +1,12 @@
 "use client"
 
+import { productFAQs } from "@/lib/product-content"
+
 import type React from "react"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 
-const faqData = [
-  {
-    "question": "What can I do with Copper?",
-    "answer": "Edit Rust and navigate with rust-analyzer. Explore Cargo targets, choose a task preset, and run builds, checks, Clippy, or selected tests. Use the terminal, stage Git hunks, debug with breakpoints and stepping, and review agent edits. These describe the development build; toolchains and debug adapters must be available on your project host. Doctest debugging is currently unavailable."
-  },
-  {
-    "question": "Is Groovy available?",
-    "answer": "Groovy remains planned, with no public installer or enabled release targets. Its Java and Kotlin development candidate has local macOS ARM64 evidence for cached Maven and Gradle builds, selected JUnit tests, and Java main debugging. Dependency inspection has partial provider coverage; test debugging, packaging, and broader platform qualification remain open. The product name does not establish support for the Groovy language, which remains a separate release decision."
-  },
-  {
-    "question": "Can I choose an agent or model provider?",
-    "answer": "Copper lets you configure model providers, external agents through Agent Client Protocol, and MCP servers. Tool permissions can allow, deny, or require confirmation. Models, authentication, execution, and available tools depend on the integration you select."
-  },
-  {
-    "question": "How are agent changes reviewed?",
-    "answer": "Inspect tool activity, command output, and edit diffs. Copper's native agent provides keep/reject controls for individual hunks or the whole change, plus checkpoints to restore earlier code. External agents may provide different review and checkpoint support. The feature illustrations on this page are static examples."
-  },
-  {
-    "question": "Which other language tools are planned?",
-    "answer": "imagineering plans development tools for C, C++, C#, Python, and other languages. These are roadmap directions. Product feature sets, release dates, downloads, and pricing are not specified here. Existing editor language support does not make a separate product available."
-  },
-  {
-    "question": "Where can I read the source and build instructions?",
-    "answer": "The source and documentation links point to the existing GitHub repository, which currently requires access. The Copper build guide and Groovy development notes follow the dev branch. This page describes development features rather than promising them in an older release. No new download or pricing is announced here."
-  }
-]
+const faqData = productFAQs
 
 interface FAQItemProps {
   question: string
@@ -104,7 +81,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-[18.20px] break-words">
-            Product status, agent configuration, and what is included in Copper.
+            Made’s shared features, product availability and setup.
           </p>
         </div>
       </div>

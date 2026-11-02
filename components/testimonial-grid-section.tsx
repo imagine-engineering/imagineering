@@ -2,9 +2,9 @@ import { Braces, Terminal, GitCompareArrows, Bug, Plug, FileSearch, Layers, type
 
 const testimonials = [
   {
-    quote: "Copper combines Rust editing, rust-analyzer, Cargo, tests, terminal, Git, debugging, and agent tools. Inspect command output and proposed changes, then choose which edits to keep.",
-    name: "Copper",
-    company: "Rust development",
+    quote: "Made combines editing, language tools, terminal, Git, debugging and agents. Product builds add their own tools. Inspect output and proposed changes before keeping an edit.",
+    name: "Made",
+    company: "Shared development tools",
     Icon: Braces,
     type: "large-teal",
   },
@@ -23,7 +23,7 @@ const testimonials = [
     type: "small-dark",
   },
   {
-    quote: "Stop at a Rust breakpoint, step through the code, and inspect variables with a configured debug adapter.",
+    quote: "Stop at a Rust breakpoint, step through code and inspect variables with a configured debug adapter.",
     name: "Debug Rust",
     company: "Breakpoints and stepping",
     Icon: Bug,
@@ -44,9 +44,9 @@ const testimonials = [
     type: "small-dark",
   },
   {
-    quote: "Groovy is in development for Java and Kotlin. Candidate builds have local Maven, Gradle, JUnit, and Java debugging evidence. It remains planned, with no public installer.",
-    name: "Groovy",
-    company: "Planned JVM product",
+    quote: "Sim adds a native graph workspace through an explicit build option. Model, node and backend coverage remain in development, outside Copper’s default profile.",
+    name: "Sim",
+    company: "Opt-in development",
     Icon: Layers,
     type: "large-light",
   },
@@ -128,8 +128,8 @@ export function TestimonialGridSection() {
             Keep the work inspectable
           </h2>
           <p className="self-stretch text-center text-muted-foreground text-sm md:text-sm lg:text-base font-medium leading-[18.20px] md:leading-relaxed lg:leading-relaxed">
-            {"Editing, commands, agent activity, and review in Copper."} <br />{" "}
-            {"Groovy is being developed for Java and Kotlin projects."}
+            {"Shared tools, with Rust examples from Copper."} <br />{" "}
+            {"Agent and provider setup depends on the product build."}
           </p>
         </div>
       </div>
