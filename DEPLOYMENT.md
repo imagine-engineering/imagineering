@@ -22,7 +22,7 @@ The workflow builds on pushes to the repository's default branch and manual disp
 
 The site uses root-relative asset paths for the custom domain, with no repository `basePath`. Next.js exports local font files, unoptimized images, a static `.png` social image, HTML, JavaScript and CSS. Vercel-only analytics is removed. `.nojekyll` keeps underscore assets available. Existing client interactions and animations require no server. Export validation checks local references and fragments, font files, metadata, social image bytes/dimensions, and unchanged public assets.
 
-The genuine Copper screenshot remains the native capture from application `origin/dev` revision `eeb85f875d7e8f4666a2b18aec47157f3605d8c5`. SHA-256: `c059ac3e110494ffb6f3e80287c293629240313128a75926c46d43b4dfcc0fed`. Source/build/documentation links still require access to the existing private product repository. There are no new download links.
+The genuine Copper screenshot remains the native capture from application `origin/dev` revision `eeb85f875d7e8f4666a2b18aec47157f3605d8c5`. SHA-256: `c059ac3e110494ffb6f3e80287c293629240313128a75926c46d43b4dfcc0fed`. Current source/build/documentation links use the public `imagine-engineering/made` repository on `main` (rechecked 2 November 2026). Public access does not establish release availability. There are no new download links.
 
 ## DNS and HTTPS
 
@@ -42,3 +42,19 @@ The `www` record is optional. It points to the actual repository owner, without 
 After TXT propagation, verify the domain at https://github.com/organizations/imagine-engineering/settings/pages. Retain the TXT record after verification. After the A records resolve to GitHub and its certificate is issued, enable **Enforce HTTPS** at https://github.com/imagine-engineering/imagineering/settings/pages. A successful deployment alone does not establish correct DNS, ownership verification, or HTTPS readiness.
 
 References: [Next.js static export](https://nextjs.org/docs/15/app/guides/static-exports), [official Pages workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [custom-domain DNS](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [ownership verification](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
+
+
+## Content/reference delivery boundary — 2 November 2026
+
+The Made/product content, Copper artwork, metadata and canonical repository links
+are independent of draft PR #1. Documentation links go directly to the canonical
+repository on `main`; no `/docs/` or `/support/` routes or unfinished publishing
+automation are included. The existing Pages workflow is unchanged. Merging this
+branch uses the normal checked Pages deployment; no release coordination, new
+credentials, workflow dispatch or hosting/settings changes are enabled.
+
+The public product identities are Copper, Groovy and Sim. The user confirmed
+that Forge is now Sim; stale catalog naming does not introduce a separate
+game-development claim. The canonical repository currently has no published
+release assets. The genuine Copper screenshot and historical capture revision
+above remain unchanged. See `CONTENT_REVIEW.md` for product evidence and scope.

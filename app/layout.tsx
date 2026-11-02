@@ -7,21 +7,21 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://imagine.engineering'),
-  title: 'imagineering | Copper and Groovy development tools',
-  description: 'Explore Copper for Rust editing, Cargo, tests, debugging, Git, terminal, agents, and change review. Groovy JVM tools are in development. More language products are planned.',
+  title: 'imagineering | Made development tools',
+  description: 'Made’s shared editing, language tools, agents, terminal, Git, debugging and review. Explore Copper, the Groovy candidate and opt-in Sim workflows.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'imagineering | Copper and Groovy development tools',
-    description: 'Rust development in Copper. Groovy JVM tools are in development. More language products are planned.',
+    title: 'imagineering | Made development tools',
+    description: 'Made’s shared developer tools. Copper for Rust, Groovy JVM development and opt-in Sim visual workflows.',
     url: 'https://imagine.engineering',
     siteName: 'imagineering',
     type: 'website',
-    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'imagineering — Copper for Rust; Groovy JVM tools in development' }],
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'imagineering — Made, Copper, Groovy and Sim' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'imagineering | Copper and Groovy development tools',
-    description: 'Rust development in Copper. Groovy JVM tools are in development. More language products are planned.',
+    title: 'imagineering | Made development tools',
+    description: 'Made’s shared developer tools. Copper for Rust, Groovy JVM development and opt-in Sim visual workflows.',
     images: ['/opengraph-image.png'],
   },
   icons: {
